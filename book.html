@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预约包场 · 山野茶铺</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <span class="brand"><img src="assets/logo.svg" alt="">山野茶铺</span>
+      <nav>
+        <a href="index.html">首页</a>
+        <a href="menu.html">菜单价目</a>
+        <a href="shop.html">门店信息</a>
+        <a href="book.html" class="active">预约包场</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>预约包场</h1>
+    <p>六人以上聚会、读书会、小型活动可以预约包场；填好下面的信息，我们会在一个工作日内回复。</p>
+    <form class="book" onsubmit="return preview(event)">
+      <input name="name" placeholder="你的称呼" required>
+      <input name="email" type="email" placeholder="你的邮箱" required>
+      <select name="type" required>
+        <option value="">活动类型</option>
+        <option>朋友聚会</option>
+        <option>读书会</option>
+        <option>小型分享会</option>
+        <option>其他</option>
+      </select>
+      <input name="date" type="date" required>
+      <input name="people" type="number" min="6" max="24" placeholder="人数（6～24）" required>
+      <textarea name="msg" rows="4" placeholder="还有什么要说明的"></textarea>
+      <button type="submit">提交预约（演示：本页只做预览，不真正发送）</button>
+    </form>
+    <p id="result" class="card" style="display:none"></p>
+  </main>
+  <footer>
+    <p>© 2026 山野茶铺 · <a href="#top">返回顶部</a></p>
+  </footer>
+  <script>
+    function preview(e) {
+      e.preventDefault();
+      const f = new FormData(e.target);
+      const box = document.getElementById('result');
+      box.style.display = 'block';
+      box.textContent = `预览：${f.get('name')}（${f.get('email')}）预约 ${f.get('date')} 的${f.get('type')}，${f.get('people')} 人。${f.get('msg') || ''}`;
+      return false;
+    }
+  </script>
+</body>
+</html>
