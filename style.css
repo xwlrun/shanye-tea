@@ -47,5 +47,9 @@ footer a { color: var(--primary); }
 @media (max-width: 600px) {
   .hero { flex-direction: column; text-align: center; }
   .nav { flex-direction: column; gap: 10px; }
+  .nav nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; }
+  .nav a { margin-left: 0; font-size: 14px; }
   .info { grid-template-columns: 1fr; }
+  table.menu th:nth-child(2), table.menu td:nth-child(2) { display: none; }
+  table.menu td:first-child { max-width: 60vw; overflow-wrap: anywhere; }
 }
